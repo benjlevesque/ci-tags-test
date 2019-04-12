@@ -8,8 +8,21 @@ jobs:
       - checkout
       - run: echo "hello world"
 
+  build_tagonly:
+    docker:
+      - image: 'circleci/python:2.7'
+    steps:
+      - checkout
+      - run: echo "hello world from tag" 
+
 workflows:
   version: 2
   build:
     jobs:
       - build
+      - build_tagonly:
+         requires: 
+            - build
+         filters:
+            tags: 
+              only: /.*/

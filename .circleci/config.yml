@@ -21,8 +21,9 @@ workflows:
     jobs:
       - build
       - build_tagonly:
-         filters:
-            branches: 
+          filters:
+            branches:
               ignore: /.*/
-            tags: 
+            tags:
               only: /.*/
+              

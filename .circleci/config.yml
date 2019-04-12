@@ -19,7 +19,12 @@ workflows:
   version: 2
   build:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: /.*/
+            tags:
+              only: /.*/
       - build_tagonly:
           requires:
             - build
